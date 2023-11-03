@@ -1,0 +1,1186 @@
+ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"consoleCommands.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.ConsoleCommandComment,"ax",%progbits
+  20              		.align	1
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  25              	ConsoleCommandComment:
+  26              	.LVL0:
+  27              	.LFB130:
+  28              		.file 1 "Core/Src/consoleCommands.c"
+   1:Core/Src/consoleCommands.c **** // ConsoleCommands.c
+   2:Core/Src/consoleCommands.c **** // This is where you add commands:
+   3:Core/Src/consoleCommands.c **** //		1. Add a protoype
+   4:Core/Src/consoleCommands.c **** //			static eCommandResult_T ConsoleCommandVer(const char buffer[]);
+   5:Core/Src/consoleCommands.c **** //		2. Add the command to mConsoleCommandTable
+   6:Core/Src/consoleCommands.c **** //		    {"ver", &ConsoleCommandVer, HELP("Get the version string")},
+   7:Core/Src/consoleCommands.c **** //		3. Implement the function, using ConsoleReceiveParam<Type> to get the parameters from the buffe
+   8:Core/Src/consoleCommands.c **** 
+   9:Core/Src/consoleCommands.c **** #include <string.h>
+  10:Core/Src/consoleCommands.c **** #include "stm32f4xx_hal.h"
+  11:Core/Src/consoleCommands.c **** 
+  12:Core/Src/consoleCommands.c **** #include "consoleCommands.h"
+  13:Core/Src/consoleCommands.c **** #include "console.h"
+  14:Core/Src/consoleCommands.c **** #include "consoleIo.h"
+  15:Core/Src/consoleCommands.c **** #include "version.h"
+  16:Core/Src/consoleCommands.c **** 
+  17:Core/Src/consoleCommands.c **** #define IGNORE_UNUSED_VARIABLE(x)     if ( &x == &x ) {}
+  18:Core/Src/consoleCommands.c **** 
+  19:Core/Src/consoleCommands.c **** static eCommandResult_T ConsoleCommandComment(const char buffer[]);
+  20:Core/Src/consoleCommands.c **** static eCommandResult_T ConsoleCommandVer(const char buffer[]);
+  21:Core/Src/consoleCommands.c **** static eCommandResult_T ConsoleCommandHelp(const char buffer[]);
+  22:Core/Src/consoleCommands.c **** static eCommandResult_T ConsoleCommandParamExampleInt16(const char buffer[]);
+  23:Core/Src/consoleCommands.c **** static eCommandResult_T ConsoleCommandParamExampleHexUint16(const char buffer[]);
+  24:Core/Src/consoleCommands.c **** static eCommandResult_T ConsoleCommandLedToggle(const char buffer[]);
+  25:Core/Src/consoleCommands.c **** static eCommandResult_T ConsoleCommandParamLedOnOff(const char buffer[]);
+  26:Core/Src/consoleCommands.c **** 
+  27:Core/Src/consoleCommands.c **** 
+  28:Core/Src/consoleCommands.c **** static const sConsoleCommandTable_T mConsoleCommandTable[] =
+  29:Core/Src/consoleCommands.c **** {
+  30:Core/Src/consoleCommands.c ****     {";", ConsoleCommandComment, HELP("Comment! You do need a space after the semicolon. ")},
+ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s 			page 2
+
+
+  31:Core/Src/consoleCommands.c ****     {"help", ConsoleCommandHelp, HELP("Lists the commands available")},
+  32:Core/Src/consoleCommands.c ****     {"ver", ConsoleCommandVer, HELP("Get the version string")},
+  33:Core/Src/consoleCommands.c ****     {"int", ConsoleCommandParamExampleInt16, HELP("How to get a signed int16 from params list: int 
+  34:Core/Src/consoleCommands.c ****     {"u16h", ConsoleCommandParamExampleHexUint16, HELP("How to get a hex u16 from the params list: 
+  35:Core/Src/consoleCommands.c **** 	{"toggle", ConsoleCommandLedToggle, HELP("Toggle onboard LEDs")},
+  36:Core/Src/consoleCommands.c **** 	{"leds", ConsoleCommandParamLedOnOff, HELP("Turn the specified number of LEDs from the params 0 to
+  37:Core/Src/consoleCommands.c **** 
+  38:Core/Src/consoleCommands.c **** 	CONSOLE_COMMAND_TABLE_END // must be LAST
+  39:Core/Src/consoleCommands.c **** };
+  40:Core/Src/consoleCommands.c **** 
+  41:Core/Src/consoleCommands.c **** static eCommandResult_T ConsoleCommandComment(const char buffer[])
+  42:Core/Src/consoleCommands.c **** {
+  29              		.loc 1 42 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		@ link register save eliminated.
+  43:Core/Src/consoleCommands.c **** 	// do nothing
+  44:Core/Src/consoleCommands.c **** 	IGNORE_UNUSED_VARIABLE(buffer);
+  34              		.loc 1 44 2 view .LVU1
+  35              		.loc 1 44 2 view .LVU2
+  36              		.loc 1 44 32 view .LVU3
+  45:Core/Src/consoleCommands.c **** 	return COMMAND_SUCCESS;
+  37              		.loc 1 45 2 view .LVU4
+  46:Core/Src/consoleCommands.c **** }
+  38              		.loc 1 46 1 is_stmt 0 view .LVU5
+  39 0000 0020     		movs	r0, #0
+  40              	.LVL1:
+  41              		.loc 1 46 1 view .LVU6
+  42 0002 7047     		bx	lr
+  43              		.cfi_endproc
+  44              	.LFE130:
+  46              		.section	.rodata.ConsoleCommandVer.str1.4,"aMS",%progbits,1
+  47              		.align	2
+  48              	.LC0:
+  49 0000 52657573 		.ascii	"ReusableCode 0.0.0.1\000"
+  49      61626C65 
+  49      436F6465 
+  49      20302E30 
+  49      2E302E31 
+  50 0015 000000   		.align	2
+  51              	.LC1:
+  52 0018 0D0A00   		.ascii	"\015\012\000"
+  53              		.section	.text.ConsoleCommandVer,"ax",%progbits
+  54              		.align	1
+  55              		.syntax unified
+  56              		.thumb
+  57              		.thumb_func
+  59              	ConsoleCommandVer:
+  60              	.LVL2:
+  61              	.LFB134:
+  47:Core/Src/consoleCommands.c **** 
+  48:Core/Src/consoleCommands.c **** static eCommandResult_T ConsoleCommandHelp(const char buffer[])
+  49:Core/Src/consoleCommands.c **** {
+  50:Core/Src/consoleCommands.c **** 	uint32_t i;
+  51:Core/Src/consoleCommands.c **** 	uint32_t tableLength;
+  52:Core/Src/consoleCommands.c **** 	eCommandResult_T result = COMMAND_SUCCESS;
+ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s 			page 3
+
+
+  53:Core/Src/consoleCommands.c **** 
+  54:Core/Src/consoleCommands.c ****     IGNORE_UNUSED_VARIABLE(buffer);
+  55:Core/Src/consoleCommands.c **** 
+  56:Core/Src/consoleCommands.c **** 	tableLength = sizeof(mConsoleCommandTable) / sizeof(mConsoleCommandTable[0]);
+  57:Core/Src/consoleCommands.c **** 	for ( i = 0u ; i < tableLength - 1u ; i++ )
+  58:Core/Src/consoleCommands.c **** 	{
+  59:Core/Src/consoleCommands.c **** 		ConsoleIoSendString(mConsoleCommandTable[i].name);
+  60:Core/Src/consoleCommands.c **** #if CONSOLE_COMMAND_MAX_HELP_LENGTH > 0
+  61:Core/Src/consoleCommands.c **** 		ConsoleIoSendString(" : ");
+  62:Core/Src/consoleCommands.c **** 		ConsoleIoSendString(mConsoleCommandTable[i].help);
+  63:Core/Src/consoleCommands.c **** #endif // CONSOLE_COMMAND_MAX_HELP_LENGTH > 0
+  64:Core/Src/consoleCommands.c **** 		ConsoleIoSendString(STR_ENDLINE);
+  65:Core/Src/consoleCommands.c **** 	}
+  66:Core/Src/consoleCommands.c **** 	return result;
+  67:Core/Src/consoleCommands.c **** }
+  68:Core/Src/consoleCommands.c **** 
+  69:Core/Src/consoleCommands.c **** static eCommandResult_T ConsoleCommandParamExampleInt16(const char buffer[])
+  70:Core/Src/consoleCommands.c **** {
+  71:Core/Src/consoleCommands.c **** 	int16_t parameterInt;
+  72:Core/Src/consoleCommands.c **** 	eCommandResult_T result;
+  73:Core/Src/consoleCommands.c **** 	result = ConsoleReceiveParamInt16(buffer, 1, &parameterInt);
+  74:Core/Src/consoleCommands.c **** 	if ( COMMAND_SUCCESS == result )
+  75:Core/Src/consoleCommands.c **** 	{
+  76:Core/Src/consoleCommands.c **** 		ConsoleIoSendString("Parameter is ");
+  77:Core/Src/consoleCommands.c **** 		ConsoleSendParamInt16(parameterInt);
+  78:Core/Src/consoleCommands.c **** 		ConsoleIoSendString(" (0x");
+  79:Core/Src/consoleCommands.c **** 		ConsoleSendParamHexUint16((uint16_t)parameterInt);
+  80:Core/Src/consoleCommands.c **** 		ConsoleIoSendString(")");
+  81:Core/Src/consoleCommands.c **** 		ConsoleIoSendString(STR_ENDLINE);
+  82:Core/Src/consoleCommands.c **** 	}
+  83:Core/Src/consoleCommands.c **** 	return result;
+  84:Core/Src/consoleCommands.c **** }
+  85:Core/Src/consoleCommands.c **** static eCommandResult_T ConsoleCommandParamExampleHexUint16(const char buffer[])
+  86:Core/Src/consoleCommands.c **** {
+  87:Core/Src/consoleCommands.c **** 	uint16_t parameterUint16;
+  88:Core/Src/consoleCommands.c **** 	eCommandResult_T result;
+  89:Core/Src/consoleCommands.c **** 	result = ConsoleReceiveParamHexUint16(buffer, 1, &parameterUint16);
+  90:Core/Src/consoleCommands.c **** 	if ( COMMAND_SUCCESS == result )
+  91:Core/Src/consoleCommands.c **** 	{
+  92:Core/Src/consoleCommands.c **** 		ConsoleIoSendString("Parameter is 0x");
+  93:Core/Src/consoleCommands.c **** 		ConsoleSendParamHexUint16(parameterUint16);
+  94:Core/Src/consoleCommands.c **** 		ConsoleIoSendString(STR_ENDLINE);
+  95:Core/Src/consoleCommands.c **** 	}
+  96:Core/Src/consoleCommands.c **** 	return result;
+  97:Core/Src/consoleCommands.c **** }
+  98:Core/Src/consoleCommands.c **** 
+  99:Core/Src/consoleCommands.c **** static eCommandResult_T ConsoleCommandVer(const char buffer[])
+ 100:Core/Src/consoleCommands.c **** {
+  62              		.loc 1 100 1 is_stmt 1 view -0
+  63              		.cfi_startproc
+  64              		@ args = 0, pretend = 0, frame = 0
+  65              		@ frame_needed = 0, uses_anonymous_args = 0
+  66              		.loc 1 100 1 is_stmt 0 view .LVU8
+  67 0000 08B5     		push	{r3, lr}
+  68              		.cfi_def_cfa_offset 8
+  69              		.cfi_offset 3, -8
+  70              		.cfi_offset 14, -4
+ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s 			page 4
+
+
+ 101:Core/Src/consoleCommands.c **** 	eCommandResult_T result = COMMAND_SUCCESS;
+  71              		.loc 1 101 2 is_stmt 1 view .LVU9
+  72              	.LVL3:
+ 102:Core/Src/consoleCommands.c **** 
+ 103:Core/Src/consoleCommands.c ****     IGNORE_UNUSED_VARIABLE(buffer);
+  73              		.loc 1 103 5 view .LVU10
+  74              		.loc 1 103 5 view .LVU11
+  75              		.loc 1 103 35 view .LVU12
+ 104:Core/Src/consoleCommands.c **** 
+ 105:Core/Src/consoleCommands.c **** 	ConsoleIoSendString(VERSION_STRING);
+  76              		.loc 1 105 2 view .LVU13
+  77 0002 0448     		ldr	r0, .L4
+  78              	.LVL4:
+  79              		.loc 1 105 2 is_stmt 0 view .LVU14
+  80 0004 FFF7FEFF 		bl	ConsoleIoSendString
+  81              	.LVL5:
+ 106:Core/Src/consoleCommands.c **** 	ConsoleIoSendString(STR_ENDLINE);
+  82              		.loc 1 106 2 is_stmt 1 view .LVU15
+  83 0008 0348     		ldr	r0, .L4+4
+  84 000a FFF7FEFF 		bl	ConsoleIoSendString
+  85              	.LVL6:
+ 107:Core/Src/consoleCommands.c **** 	return result;
+  86              		.loc 1 107 2 view .LVU16
+ 108:Core/Src/consoleCommands.c **** }
+  87              		.loc 1 108 1 is_stmt 0 view .LVU17
+  88 000e 0020     		movs	r0, #0
+  89 0010 08BD     		pop	{r3, pc}
+  90              	.L5:
+  91 0012 00BF     		.align	2
+  92              	.L4:
+  93 0014 00000000 		.word	.LC0
+  94 0018 18000000 		.word	.LC1
+  95              		.cfi_endproc
+  96              	.LFE134:
+  98              		.section	.rodata.ConsoleCommandHelp.str1.4,"aMS",%progbits,1
+  99              		.align	2
+ 100              	.LC2:
+ 101 0000 203A2000 		.ascii	" : \000"
+ 102              		.section	.text.ConsoleCommandHelp,"ax",%progbits
+ 103              		.align	1
+ 104              		.syntax unified
+ 105              		.thumb
+ 106              		.thumb_func
+ 108              	ConsoleCommandHelp:
+ 109              	.LVL7:
+ 110              	.LFB131:
+  49:Core/Src/consoleCommands.c **** 	uint32_t i;
+ 111              		.loc 1 49 1 is_stmt 1 view -0
+ 112              		.cfi_startproc
+ 113              		@ args = 0, pretend = 0, frame = 0
+ 114              		@ frame_needed = 0, uses_anonymous_args = 0
+  49:Core/Src/consoleCommands.c **** 	uint32_t i;
+ 115              		.loc 1 49 1 is_stmt 0 view .LVU19
+ 116 0000 70B5     		push	{r4, r5, r6, lr}
+ 117              		.cfi_def_cfa_offset 16
+ 118              		.cfi_offset 4, -16
+ 119              		.cfi_offset 5, -12
+ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s 			page 5
+
+
+ 120              		.cfi_offset 6, -8
+ 121              		.cfi_offset 14, -4
+  50:Core/Src/consoleCommands.c **** 	uint32_t tableLength;
+ 122              		.loc 1 50 2 is_stmt 1 view .LVU20
+  51:Core/Src/consoleCommands.c **** 	eCommandResult_T result = COMMAND_SUCCESS;
+ 123              		.loc 1 51 2 view .LVU21
+  52:Core/Src/consoleCommands.c **** 
+ 124              		.loc 1 52 2 view .LVU22
+ 125              	.LVL8:
+  54:Core/Src/consoleCommands.c **** 
+ 126              		.loc 1 54 5 view .LVU23
+  54:Core/Src/consoleCommands.c **** 
+ 127              		.loc 1 54 5 view .LVU24
+  54:Core/Src/consoleCommands.c **** 
+ 128              		.loc 1 54 35 view .LVU25
+  56:Core/Src/consoleCommands.c **** 	for ( i = 0u ; i < tableLength - 1u ; i++ )
+ 129              		.loc 1 56 2 view .LVU26
+  57:Core/Src/consoleCommands.c **** 	{
+ 130              		.loc 1 57 2 view .LVU27
+  57:Core/Src/consoleCommands.c **** 	{
+ 131              		.loc 1 57 10 is_stmt 0 view .LVU28
+ 132 0002 0024     		movs	r4, #0
+  57:Core/Src/consoleCommands.c **** 	{
+ 133              		.loc 1 57 2 view .LVU29
+ 134 0004 14E0     		b	.L7
+ 135              	.LVL9:
+ 136              	.L8:
+  59:Core/Src/consoleCommands.c **** #if CONSOLE_COMMAND_MAX_HELP_LENGTH > 0
+ 137              		.loc 1 59 3 is_stmt 1 discriminator 3 view .LVU30
+  59:Core/Src/consoleCommands.c **** #if CONSOLE_COMMAND_MAX_HELP_LENGTH > 0
+ 138              		.loc 1 59 46 is_stmt 0 discriminator 3 view .LVU31
+ 139 0006 0C4E     		ldr	r6, .L10
+ 140 0008 E500     		lsls	r5, r4, #3
+ 141 000a 04EBC402 		add	r2, r4, r4, lsl #3
+ 142 000e D300     		lsls	r3, r2, #3
+  59:Core/Src/consoleCommands.c **** #if CONSOLE_COMMAND_MAX_HELP_LENGTH > 0
+ 143              		.loc 1 59 3 discriminator 3 view .LVU32
+ 144 0010 F058     		ldr	r0, [r6, r3]
+ 145 0012 FFF7FEFF 		bl	ConsoleIoSendString
+ 146              	.LVL10:
+  61:Core/Src/consoleCommands.c **** 		ConsoleIoSendString(mConsoleCommandTable[i].help);
+ 147              		.loc 1 61 3 is_stmt 1 discriminator 3 view .LVU33
+ 148 0016 0948     		ldr	r0, .L10+4
+ 149 0018 FFF7FEFF 		bl	ConsoleIoSendString
+ 150              	.LVL11:
+  62:Core/Src/consoleCommands.c **** #endif // CONSOLE_COMMAND_MAX_HELP_LENGTH > 0
+ 151              		.loc 1 62 3 discriminator 3 view .LVU34
+  62:Core/Src/consoleCommands.c **** #endif // CONSOLE_COMMAND_MAX_HELP_LENGTH > 0
+ 152              		.loc 1 62 46 is_stmt 0 discriminator 3 view .LVU35
+ 153 001c 2B19     		adds	r3, r5, r4
+ 154 001e D800     		lsls	r0, r3, #3
+ 155 0020 0830     		adds	r0, r0, #8
+  62:Core/Src/consoleCommands.c **** #endif // CONSOLE_COMMAND_MAX_HELP_LENGTH > 0
+ 156              		.loc 1 62 3 discriminator 3 view .LVU36
+ 157 0022 3044     		add	r0, r0, r6
+ 158 0024 FFF7FEFF 		bl	ConsoleIoSendString
+ 159              	.LVL12:
+ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s 			page 6
+
+
+  64:Core/Src/consoleCommands.c **** 	}
+ 160              		.loc 1 64 3 is_stmt 1 discriminator 3 view .LVU37
+ 161 0028 0548     		ldr	r0, .L10+8
+ 162 002a FFF7FEFF 		bl	ConsoleIoSendString
+ 163              	.LVL13:
+  57:Core/Src/consoleCommands.c **** 	{
+ 164              		.loc 1 57 41 discriminator 3 view .LVU38
+ 165 002e 0134     		adds	r4, r4, #1
+ 166              	.LVL14:
+ 167              	.L7:
+  57:Core/Src/consoleCommands.c **** 	{
+ 168              		.loc 1 57 19 discriminator 1 view .LVU39
+ 169 0030 062C     		cmp	r4, #6
+ 170 0032 E8D9     		bls	.L8
+  66:Core/Src/consoleCommands.c **** }
+ 171              		.loc 1 66 2 view .LVU40
+  67:Core/Src/consoleCommands.c **** 
+ 172              		.loc 1 67 1 is_stmt 0 view .LVU41
+ 173 0034 0020     		movs	r0, #0
+ 174 0036 70BD     		pop	{r4, r5, r6, pc}
+ 175              	.LVL15:
+ 176              	.L11:
+  67:Core/Src/consoleCommands.c **** 
+ 177              		.loc 1 67 1 view .LVU42
+ 178              		.align	2
+ 179              	.L10:
+ 180 0038 00000000 		.word	.LANCHOR0
+ 181 003c 00000000 		.word	.LC2
+ 182 0040 18000000 		.word	.LC1
+ 183              		.cfi_endproc
+ 184              	.LFE131:
+ 186              		.section	.rodata.ConsoleCommandParamLedOnOff.str1.4,"aMS",%progbits,1
+ 187              		.align	2
+ 188              	.LC3:
+ 189 0000 5475726E 		.ascii	"Turning all LEDs off\000"
+ 189      696E6720 
+ 189      616C6C20 
+ 189      4C454473 
+ 189      206F6666 
+ 190 0015 000000   		.align	2
+ 191              	.LC4:
+ 192 0018 5475726E 		.ascii	"Turning 1 LEDs on\000"
+ 192      696E6720 
+ 192      31204C45 
+ 192      4473206F 
+ 192      6E00
+ 193 002a 0000     		.align	2
+ 194              	.LC5:
+ 195 002c 5475726E 		.ascii	"Turning 2 LEDs on\000"
+ 195      696E6720 
+ 195      32204C45 
+ 195      4473206F 
+ 195      6E00
+ 196 003e 0000     		.align	2
+ 197              	.LC6:
+ 198 0040 5475726E 		.ascii	"Turning 3 LEDs on\000"
+ 198      696E6720 
+ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s 			page 7
+
+
+ 198      33204C45 
+ 198      4473206F 
+ 198      6E00
+ 199 0052 0000     		.align	2
+ 200              	.LC7:
+ 201 0054 5475726E 		.ascii	"Turning all LEDs on\000"
+ 201      696E6720 
+ 201      616C6C20 
+ 201      4C454473 
+ 201      206F6E00 
+ 202              		.align	2
+ 203              	.LC8:
+ 204 0068 596F7520 		.ascii	"You do not have \000"
+ 204      646F206E 
+ 204      6F742068 
+ 204      61766520 
+ 204      00
+ 205 0079 000000   		.align	2
+ 206              	.LC9:
+ 207 007c 204C4544 		.ascii	" LEDs on that board!\000"
+ 207      73206F6E 
+ 207      20746861 
+ 207      7420626F 
+ 207      61726421 
+ 208              		.section	.text.ConsoleCommandParamLedOnOff,"ax",%progbits
+ 209              		.align	1
+ 210              		.syntax unified
+ 211              		.thumb
+ 212              		.thumb_func
+ 214              	ConsoleCommandParamLedOnOff:
+ 215              	.LVL16:
+ 216              	.LFB136:
+ 109:Core/Src/consoleCommands.c **** 
+ 110:Core/Src/consoleCommands.c **** static eCommandResult_T ConsoleCommandLedToggle(const char buffer[])
+ 111:Core/Src/consoleCommands.c **** {
+ 112:Core/Src/consoleCommands.c **** 	eCommandResult_T result = COMMAND_SUCCESS;
+ 113:Core/Src/consoleCommands.c **** 
+ 114:Core/Src/consoleCommands.c ****     IGNORE_UNUSED_VARIABLE(buffer);
+ 115:Core/Src/consoleCommands.c **** 
+ 116:Core/Src/consoleCommands.c **** 	HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_12 | GPIO_PIN_13 | GPIO_PIN_14 | GPIO_PIN_15);
+ 117:Core/Src/consoleCommands.c **** 	ConsoleIoSendString(STR_ENDLINE);
+ 118:Core/Src/consoleCommands.c **** 	return result;
+ 119:Core/Src/consoleCommands.c **** }
+ 120:Core/Src/consoleCommands.c **** 
+ 121:Core/Src/consoleCommands.c **** static eCommandResult_T ConsoleCommandParamLedOnOff(const char buffer[])
+ 122:Core/Src/consoleCommands.c **** {
+ 217              		.loc 1 122 1 is_stmt 1 view -0
+ 218              		.cfi_startproc
+ 219              		@ args = 0, pretend = 0, frame = 8
+ 220              		@ frame_needed = 0, uses_anonymous_args = 0
+ 221              		.loc 1 122 1 is_stmt 0 view .LVU44
+ 222 0000 30B5     		push	{r4, r5, lr}
+ 223              		.cfi_def_cfa_offset 12
+ 224              		.cfi_offset 4, -12
+ 225              		.cfi_offset 5, -8
+ 226              		.cfi_offset 14, -4
+ 227 0002 83B0     		sub	sp, sp, #12
+ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s 			page 8
+
+
+ 228              		.cfi_def_cfa_offset 24
+ 123:Core/Src/consoleCommands.c **** 	int16_t parameterInt;
+ 229              		.loc 1 123 2 is_stmt 1 view .LVU45
+ 124:Core/Src/consoleCommands.c **** 	eCommandResult_T result;
+ 230              		.loc 1 124 2 view .LVU46
+ 125:Core/Src/consoleCommands.c **** 	result = ConsoleReceiveParamInt16(buffer, 1, &parameterInt);
+ 231              		.loc 1 125 2 view .LVU47
+ 232              		.loc 1 125 11 is_stmt 0 view .LVU48
+ 233 0004 0DF10602 		add	r2, sp, #6
+ 234 0008 0121     		movs	r1, #1
+ 235 000a FFF7FEFF 		bl	ConsoleReceiveParamInt16
+ 236              	.LVL17:
+ 126:Core/Src/consoleCommands.c **** 	if ( COMMAND_SUCCESS == result )
+ 237              		.loc 1 126 2 is_stmt 1 view .LVU49
+ 238              		.loc 1 126 5 is_stmt 0 view .LVU50
+ 239 000e 0446     		mov	r4, r0
+ 240 0010 A0B9     		cbnz	r0, .L13
+ 127:Core/Src/consoleCommands.c **** 	{
+ 128:Core/Src/consoleCommands.c **** 		switch (parameterInt)
+ 241              		.loc 1 128 3 is_stmt 1 view .LVU51
+ 242 0012 BDF90630 		ldrsh	r3, [sp, #6]
+ 243 0016 042B     		cmp	r3, #4
+ 244 0018 5CD8     		bhi	.L14
+ 245 001a DFE803F0 		tbb	[pc, r3]
+ 246              	.L16:
+ 247 001e 03       		.byte	(.L20-.L16)/2
+ 248 001f 12       		.byte	(.L19-.L16)/2
+ 249 0020 26       		.byte	(.L18-.L16)/2
+ 250 0021 3A       		.byte	(.L17-.L16)/2
+ 251 0022 4E       		.byte	(.L15-.L16)/2
+ 252 0023 00       		.p2align 1
+ 253              	.L20:
+ 129:Core/Src/consoleCommands.c **** 		{
+ 130:Core/Src/consoleCommands.c **** 			case 0:
+ 131:Core/Src/consoleCommands.c **** 				HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12 | GPIO_PIN_13 | GPIO_PIN_14 | GPIO_PIN_15, GPIO_PIN_RESET)
+ 254              		.loc 1 131 5 view .LVU52
+ 255 0024 0022     		movs	r2, #0
+ 256 0026 4FF47041 		mov	r1, #61440
+ 257 002a 3148     		ldr	r0, .L22
+ 258              	.LVL18:
+ 259              		.loc 1 131 5 is_stmt 0 view .LVU53
+ 260 002c FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 261              	.LVL19:
+ 132:Core/Src/consoleCommands.c **** 				ConsoleIoSendString("Turning all LEDs off");
+ 262              		.loc 1 132 5 is_stmt 1 view .LVU54
+ 263 0030 3048     		ldr	r0, .L22+4
+ 264 0032 FFF7FEFF 		bl	ConsoleIoSendString
+ 265              	.LVL20:
+ 133:Core/Src/consoleCommands.c **** 				ConsoleIoSendString(STR_ENDLINE);
+ 266              		.loc 1 133 5 view .LVU55
+ 267 0036 3048     		ldr	r0, .L22+8
+ 268 0038 FFF7FEFF 		bl	ConsoleIoSendString
+ 269              	.LVL21:
+ 134:Core/Src/consoleCommands.c **** 				break;
+ 270              		.loc 1 134 5 view .LVU56
+ 271              	.L13:
+ 135:Core/Src/consoleCommands.c **** 
+ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s 			page 9
+
+
+ 136:Core/Src/consoleCommands.c **** 			case 1:
+ 137:Core/Src/consoleCommands.c **** 				HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12 | GPIO_PIN_13 | GPIO_PIN_14 | GPIO_PIN_15, GPIO_PIN_RESET)
+ 138:Core/Src/consoleCommands.c **** 				HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12, GPIO_PIN_SET);
+ 139:Core/Src/consoleCommands.c **** 				ConsoleIoSendString("Turning 1 LEDs on");
+ 140:Core/Src/consoleCommands.c **** 				ConsoleIoSendString(STR_ENDLINE);
+ 141:Core/Src/consoleCommands.c **** 				break;
+ 142:Core/Src/consoleCommands.c **** 
+ 143:Core/Src/consoleCommands.c **** 			case 2:
+ 144:Core/Src/consoleCommands.c **** 				HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12 | GPIO_PIN_13 | GPIO_PIN_14 | GPIO_PIN_15, GPIO_PIN_RESET)
+ 145:Core/Src/consoleCommands.c **** 				HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12 | GPIO_PIN_14, GPIO_PIN_SET);
+ 146:Core/Src/consoleCommands.c **** 				ConsoleIoSendString("Turning 2 LEDs on");
+ 147:Core/Src/consoleCommands.c **** 				ConsoleIoSendString(STR_ENDLINE);
+ 148:Core/Src/consoleCommands.c **** 				break;
+ 149:Core/Src/consoleCommands.c **** 
+ 150:Core/Src/consoleCommands.c **** 			case 3:
+ 151:Core/Src/consoleCommands.c **** 				HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12 | GPIO_PIN_13 | GPIO_PIN_14 | GPIO_PIN_15, GPIO_PIN_RESET)
+ 152:Core/Src/consoleCommands.c **** 				HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12 | GPIO_PIN_13 | GPIO_PIN_14, GPIO_PIN_SET);
+ 153:Core/Src/consoleCommands.c **** 				ConsoleIoSendString("Turning 3 LEDs on");
+ 154:Core/Src/consoleCommands.c **** 				ConsoleIoSendString(STR_ENDLINE);
+ 155:Core/Src/consoleCommands.c **** 				break;
+ 156:Core/Src/consoleCommands.c **** 
+ 157:Core/Src/consoleCommands.c **** 			case 4:
+ 158:Core/Src/consoleCommands.c **** 				HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12 | GPIO_PIN_13 | GPIO_PIN_14 | GPIO_PIN_15, GPIO_PIN_SET);
+ 159:Core/Src/consoleCommands.c **** 				ConsoleIoSendString("Turning all LEDs on");
+ 160:Core/Src/consoleCommands.c **** 				ConsoleIoSendString(STR_ENDLINE);
+ 161:Core/Src/consoleCommands.c **** 				break;
+ 162:Core/Src/consoleCommands.c **** 			
+ 163:Core/Src/consoleCommands.c **** 			default:
+ 164:Core/Src/consoleCommands.c **** 				ConsoleIoSendString("You do not have ");
+ 165:Core/Src/consoleCommands.c **** 				ConsoleSendParamInt16(parameterInt);
+ 166:Core/Src/consoleCommands.c **** 				ConsoleIoSendString(" LEDs on that board!");
+ 167:Core/Src/consoleCommands.c **** 				ConsoleIoSendString(STR_ENDLINE);
+ 168:Core/Src/consoleCommands.c **** 		}
+ 169:Core/Src/consoleCommands.c **** 	}
+ 170:Core/Src/consoleCommands.c **** 		
+ 171:Core/Src/consoleCommands.c **** 	
+ 172:Core/Src/consoleCommands.c **** 	return result;
+ 272              		.loc 1 172 2 view .LVU57
+ 173:Core/Src/consoleCommands.c ****     
+ 174:Core/Src/consoleCommands.c **** 	IGNORE_UNUSED_VARIABLE(buffer);
+ 175:Core/Src/consoleCommands.c **** 
+ 176:Core/Src/consoleCommands.c **** 	HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_12 | GPIO_PIN_13 | GPIO_PIN_14 | GPIO_PIN_15);
+ 177:Core/Src/consoleCommands.c **** 	
+ 178:Core/Src/consoleCommands.c **** 	return result;
+ 179:Core/Src/consoleCommands.c **** }
+ 273              		.loc 1 179 1 is_stmt 0 view .LVU58
+ 274 003c 2046     		mov	r0, r4
+ 275 003e 03B0     		add	sp, sp, #12
+ 276              		.cfi_remember_state
+ 277              		.cfi_def_cfa_offset 12
+ 278              		@ sp needed
+ 279 0040 30BD     		pop	{r4, r5, pc}
+ 280              	.LVL22:
+ 281              	.L19:
+ 282              		.cfi_restore_state
+ 137:Core/Src/consoleCommands.c **** 				HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12, GPIO_PIN_SET);
+ 283              		.loc 1 137 5 is_stmt 1 view .LVU59
+ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s 			page 10
+
+
+ 284 0042 2B4D     		ldr	r5, .L22
+ 285 0044 0022     		movs	r2, #0
+ 286 0046 4FF47041 		mov	r1, #61440
+ 287 004a 2846     		mov	r0, r5
+ 288              	.LVL23:
+ 137:Core/Src/consoleCommands.c **** 				HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12, GPIO_PIN_SET);
+ 289              		.loc 1 137 5 is_stmt 0 view .LVU60
+ 290 004c FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 291              	.LVL24:
+ 138:Core/Src/consoleCommands.c **** 				ConsoleIoSendString("Turning 1 LEDs on");
+ 292              		.loc 1 138 5 is_stmt 1 view .LVU61
+ 293 0050 0122     		movs	r2, #1
+ 294 0052 4FF48051 		mov	r1, #4096
+ 295 0056 2846     		mov	r0, r5
+ 296 0058 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 297              	.LVL25:
+ 139:Core/Src/consoleCommands.c **** 				ConsoleIoSendString(STR_ENDLINE);
+ 298              		.loc 1 139 5 view .LVU62
+ 299 005c 2748     		ldr	r0, .L22+12
+ 300 005e FFF7FEFF 		bl	ConsoleIoSendString
+ 301              	.LVL26:
+ 140:Core/Src/consoleCommands.c **** 				break;
+ 302              		.loc 1 140 5 view .LVU63
+ 303 0062 2548     		ldr	r0, .L22+8
+ 304 0064 FFF7FEFF 		bl	ConsoleIoSendString
+ 305              	.LVL27:
+ 141:Core/Src/consoleCommands.c **** 
+ 306              		.loc 1 141 5 view .LVU64
+ 307 0068 E8E7     		b	.L13
+ 308              	.LVL28:
+ 309              	.L18:
+ 144:Core/Src/consoleCommands.c **** 				HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12 | GPIO_PIN_14, GPIO_PIN_SET);
+ 310              		.loc 1 144 5 view .LVU65
+ 311 006a 214D     		ldr	r5, .L22
+ 312 006c 0022     		movs	r2, #0
+ 313 006e 4FF47041 		mov	r1, #61440
+ 314 0072 2846     		mov	r0, r5
+ 315              	.LVL29:
+ 144:Core/Src/consoleCommands.c **** 				HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12 | GPIO_PIN_14, GPIO_PIN_SET);
+ 316              		.loc 1 144 5 is_stmt 0 view .LVU66
+ 317 0074 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 318              	.LVL30:
+ 145:Core/Src/consoleCommands.c **** 				ConsoleIoSendString("Turning 2 LEDs on");
+ 319              		.loc 1 145 5 is_stmt 1 view .LVU67
+ 320 0078 0122     		movs	r2, #1
+ 321 007a 4FF4A041 		mov	r1, #20480
+ 322 007e 2846     		mov	r0, r5
+ 323 0080 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 324              	.LVL31:
+ 146:Core/Src/consoleCommands.c **** 				ConsoleIoSendString(STR_ENDLINE);
+ 325              		.loc 1 146 5 view .LVU68
+ 326 0084 1E48     		ldr	r0, .L22+16
+ 327 0086 FFF7FEFF 		bl	ConsoleIoSendString
+ 328              	.LVL32:
+ 147:Core/Src/consoleCommands.c **** 				break;
+ 329              		.loc 1 147 5 view .LVU69
+ 330 008a 1B48     		ldr	r0, .L22+8
+ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s 			page 11
+
+
+ 331 008c FFF7FEFF 		bl	ConsoleIoSendString
+ 332              	.LVL33:
+ 148:Core/Src/consoleCommands.c **** 
+ 333              		.loc 1 148 5 view .LVU70
+ 334 0090 D4E7     		b	.L13
+ 335              	.LVL34:
+ 336              	.L17:
+ 151:Core/Src/consoleCommands.c **** 				HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12 | GPIO_PIN_13 | GPIO_PIN_14, GPIO_PIN_SET);
+ 337              		.loc 1 151 5 view .LVU71
+ 338 0092 174D     		ldr	r5, .L22
+ 339 0094 0022     		movs	r2, #0
+ 340 0096 4FF47041 		mov	r1, #61440
+ 341 009a 2846     		mov	r0, r5
+ 342              	.LVL35:
+ 151:Core/Src/consoleCommands.c **** 				HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12 | GPIO_PIN_13 | GPIO_PIN_14, GPIO_PIN_SET);
+ 343              		.loc 1 151 5 is_stmt 0 view .LVU72
+ 344 009c FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 345              	.LVL36:
+ 152:Core/Src/consoleCommands.c **** 				ConsoleIoSendString("Turning 3 LEDs on");
+ 346              		.loc 1 152 5 is_stmt 1 view .LVU73
+ 347 00a0 0122     		movs	r2, #1
+ 348 00a2 4FF4E041 		mov	r1, #28672
+ 349 00a6 2846     		mov	r0, r5
+ 350 00a8 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 351              	.LVL37:
+ 153:Core/Src/consoleCommands.c **** 				ConsoleIoSendString(STR_ENDLINE);
+ 352              		.loc 1 153 5 view .LVU74
+ 353 00ac 1548     		ldr	r0, .L22+20
+ 354 00ae FFF7FEFF 		bl	ConsoleIoSendString
+ 355              	.LVL38:
+ 154:Core/Src/consoleCommands.c **** 				break;
+ 356              		.loc 1 154 5 view .LVU75
+ 357 00b2 1148     		ldr	r0, .L22+8
+ 358 00b4 FFF7FEFF 		bl	ConsoleIoSendString
+ 359              	.LVL39:
+ 155:Core/Src/consoleCommands.c **** 
+ 360              		.loc 1 155 5 view .LVU76
+ 361 00b8 C0E7     		b	.L13
+ 362              	.LVL40:
+ 363              	.L15:
+ 158:Core/Src/consoleCommands.c **** 				ConsoleIoSendString("Turning all LEDs on");
+ 364              		.loc 1 158 5 view .LVU77
+ 365 00ba 0122     		movs	r2, #1
+ 366 00bc 4FF47041 		mov	r1, #61440
+ 367 00c0 0B48     		ldr	r0, .L22
+ 368              	.LVL41:
+ 158:Core/Src/consoleCommands.c **** 				ConsoleIoSendString("Turning all LEDs on");
+ 369              		.loc 1 158 5 is_stmt 0 view .LVU78
+ 370 00c2 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 371              	.LVL42:
+ 159:Core/Src/consoleCommands.c **** 				ConsoleIoSendString(STR_ENDLINE);
+ 372              		.loc 1 159 5 is_stmt 1 view .LVU79
+ 373 00c6 1048     		ldr	r0, .L22+24
+ 374 00c8 FFF7FEFF 		bl	ConsoleIoSendString
+ 375              	.LVL43:
+ 160:Core/Src/consoleCommands.c **** 				break;
+ 376              		.loc 1 160 5 view .LVU80
+ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s 			page 12
+
+
+ 377 00cc 0A48     		ldr	r0, .L22+8
+ 378 00ce FFF7FEFF 		bl	ConsoleIoSendString
+ 379              	.LVL44:
+ 161:Core/Src/consoleCommands.c **** 			
+ 380              		.loc 1 161 5 view .LVU81
+ 381 00d2 B3E7     		b	.L13
+ 382              	.LVL45:
+ 383              	.L14:
+ 164:Core/Src/consoleCommands.c **** 				ConsoleSendParamInt16(parameterInt);
+ 384              		.loc 1 164 5 view .LVU82
+ 385 00d4 0D48     		ldr	r0, .L22+28
+ 386              	.LVL46:
+ 164:Core/Src/consoleCommands.c **** 				ConsoleSendParamInt16(parameterInt);
+ 387              		.loc 1 164 5 is_stmt 0 view .LVU83
+ 388 00d6 FFF7FEFF 		bl	ConsoleIoSendString
+ 389              	.LVL47:
+ 165:Core/Src/consoleCommands.c **** 				ConsoleIoSendString(" LEDs on that board!");
+ 390              		.loc 1 165 5 is_stmt 1 view .LVU84
+ 391 00da BDF90600 		ldrsh	r0, [sp, #6]
+ 392 00de FFF7FEFF 		bl	ConsoleSendParamInt16
+ 393              	.LVL48:
+ 166:Core/Src/consoleCommands.c **** 				ConsoleIoSendString(STR_ENDLINE);
+ 394              		.loc 1 166 5 view .LVU85
+ 395 00e2 0B48     		ldr	r0, .L22+32
+ 396 00e4 FFF7FEFF 		bl	ConsoleIoSendString
+ 397              	.LVL49:
+ 167:Core/Src/consoleCommands.c **** 		}
+ 398              		.loc 1 167 5 view .LVU86
+ 399 00e8 0348     		ldr	r0, .L22+8
+ 400 00ea FFF7FEFF 		bl	ConsoleIoSendString
+ 401              	.LVL50:
+ 402 00ee A5E7     		b	.L13
+ 403              	.L23:
+ 404              		.align	2
+ 405              	.L22:
+ 406 00f0 000C0240 		.word	1073875968
+ 407 00f4 00000000 		.word	.LC3
+ 408 00f8 18000000 		.word	.LC1
+ 409 00fc 18000000 		.word	.LC4
+ 410 0100 2C000000 		.word	.LC5
+ 411 0104 40000000 		.word	.LC6
+ 412 0108 54000000 		.word	.LC7
+ 413 010c 68000000 		.word	.LC8
+ 414 0110 7C000000 		.word	.LC9
+ 415              		.cfi_endproc
+ 416              	.LFE136:
+ 418              		.section	.text.ConsoleCommandLedToggle,"ax",%progbits
+ 419              		.align	1
+ 420              		.syntax unified
+ 421              		.thumb
+ 422              		.thumb_func
+ 424              	ConsoleCommandLedToggle:
+ 425              	.LVL51:
+ 426              	.LFB135:
+ 111:Core/Src/consoleCommands.c **** 	eCommandResult_T result = COMMAND_SUCCESS;
+ 427              		.loc 1 111 1 view -0
+ 428              		.cfi_startproc
+ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s 			page 13
+
+
+ 429              		@ args = 0, pretend = 0, frame = 0
+ 430              		@ frame_needed = 0, uses_anonymous_args = 0
+ 111:Core/Src/consoleCommands.c **** 	eCommandResult_T result = COMMAND_SUCCESS;
+ 431              		.loc 1 111 1 is_stmt 0 view .LVU88
+ 432 0000 08B5     		push	{r3, lr}
+ 433              		.cfi_def_cfa_offset 8
+ 434              		.cfi_offset 3, -8
+ 435              		.cfi_offset 14, -4
+ 112:Core/Src/consoleCommands.c **** 
+ 436              		.loc 1 112 2 is_stmt 1 view .LVU89
+ 437              	.LVL52:
+ 114:Core/Src/consoleCommands.c **** 
+ 438              		.loc 1 114 5 view .LVU90
+ 114:Core/Src/consoleCommands.c **** 
+ 439              		.loc 1 114 5 view .LVU91
+ 114:Core/Src/consoleCommands.c **** 
+ 440              		.loc 1 114 35 view .LVU92
+ 116:Core/Src/consoleCommands.c **** 	ConsoleIoSendString(STR_ENDLINE);
+ 441              		.loc 1 116 2 view .LVU93
+ 442 0002 4FF47041 		mov	r1, #61440
+ 443 0006 0448     		ldr	r0, .L26
+ 444              	.LVL53:
+ 116:Core/Src/consoleCommands.c **** 	ConsoleIoSendString(STR_ENDLINE);
+ 445              		.loc 1 116 2 is_stmt 0 view .LVU94
+ 446 0008 FFF7FEFF 		bl	HAL_GPIO_TogglePin
+ 447              	.LVL54:
+ 117:Core/Src/consoleCommands.c **** 	return result;
+ 448              		.loc 1 117 2 is_stmt 1 view .LVU95
+ 449 000c 0348     		ldr	r0, .L26+4
+ 450 000e FFF7FEFF 		bl	ConsoleIoSendString
+ 451              	.LVL55:
+ 118:Core/Src/consoleCommands.c **** }
+ 452              		.loc 1 118 2 view .LVU96
+ 119:Core/Src/consoleCommands.c **** 
+ 453              		.loc 1 119 1 is_stmt 0 view .LVU97
+ 454 0012 0020     		movs	r0, #0
+ 455 0014 08BD     		pop	{r3, pc}
+ 456              	.L27:
+ 457 0016 00BF     		.align	2
+ 458              	.L26:
+ 459 0018 000C0240 		.word	1073875968
+ 460 001c 18000000 		.word	.LC1
+ 461              		.cfi_endproc
+ 462              	.LFE135:
+ 464              		.section	.rodata.ConsoleCommandParamExampleHexUint16.str1.4,"aMS",%progbits,1
+ 465              		.align	2
+ 466              	.LC10:
+ 467 0000 50617261 		.ascii	"Parameter is 0x\000"
+ 467      6D657465 
+ 467      72206973 
+ 467      20307800 
+ 468              		.section	.text.ConsoleCommandParamExampleHexUint16,"ax",%progbits
+ 469              		.align	1
+ 470              		.syntax unified
+ 471              		.thumb
+ 472              		.thumb_func
+ 474              	ConsoleCommandParamExampleHexUint16:
+ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s 			page 14
+
+
+ 475              	.LVL56:
+ 476              	.LFB133:
+  86:Core/Src/consoleCommands.c **** 	uint16_t parameterUint16;
+ 477              		.loc 1 86 1 is_stmt 1 view -0
+ 478              		.cfi_startproc
+ 479              		@ args = 0, pretend = 0, frame = 8
+ 480              		@ frame_needed = 0, uses_anonymous_args = 0
+  86:Core/Src/consoleCommands.c **** 	uint16_t parameterUint16;
+ 481              		.loc 1 86 1 is_stmt 0 view .LVU99
+ 482 0000 10B5     		push	{r4, lr}
+ 483              		.cfi_def_cfa_offset 8
+ 484              		.cfi_offset 4, -8
+ 485              		.cfi_offset 14, -4
+ 486 0002 82B0     		sub	sp, sp, #8
+ 487              		.cfi_def_cfa_offset 16
+  87:Core/Src/consoleCommands.c **** 	eCommandResult_T result;
+ 488              		.loc 1 87 2 is_stmt 1 view .LVU100
+  88:Core/Src/consoleCommands.c **** 	result = ConsoleReceiveParamHexUint16(buffer, 1, &parameterUint16);
+ 489              		.loc 1 88 2 view .LVU101
+  89:Core/Src/consoleCommands.c **** 	if ( COMMAND_SUCCESS == result )
+ 490              		.loc 1 89 2 view .LVU102
+  89:Core/Src/consoleCommands.c **** 	if ( COMMAND_SUCCESS == result )
+ 491              		.loc 1 89 11 is_stmt 0 view .LVU103
+ 492 0004 0DF10602 		add	r2, sp, #6
+ 493 0008 0121     		movs	r1, #1
+ 494 000a FFF7FEFF 		bl	ConsoleReceiveParamHexUint16
+ 495              	.LVL57:
+  90:Core/Src/consoleCommands.c **** 	{
+ 496              		.loc 1 90 2 is_stmt 1 view .LVU104
+  90:Core/Src/consoleCommands.c **** 	{
+ 497              		.loc 1 90 5 is_stmt 0 view .LVU105
+ 498 000e 0446     		mov	r4, r0
+ 499 0010 10B1     		cbz	r0, .L31
+ 500              	.LVL58:
+ 501              	.L29:
+  96:Core/Src/consoleCommands.c **** }
+ 502              		.loc 1 96 2 is_stmt 1 view .LVU106
+  97:Core/Src/consoleCommands.c **** 
+ 503              		.loc 1 97 1 is_stmt 0 view .LVU107
+ 504 0012 2046     		mov	r0, r4
+ 505 0014 02B0     		add	sp, sp, #8
+ 506              		.cfi_remember_state
+ 507              		.cfi_def_cfa_offset 8
+ 508              		@ sp needed
+ 509 0016 10BD     		pop	{r4, pc}
+ 510              	.LVL59:
+ 511              	.L31:
+ 512              		.cfi_restore_state
+  92:Core/Src/consoleCommands.c **** 		ConsoleSendParamHexUint16(parameterUint16);
+ 513              		.loc 1 92 3 is_stmt 1 view .LVU108
+ 514 0018 0548     		ldr	r0, .L32
+ 515              	.LVL60:
+  92:Core/Src/consoleCommands.c **** 		ConsoleSendParamHexUint16(parameterUint16);
+ 516              		.loc 1 92 3 is_stmt 0 view .LVU109
+ 517 001a FFF7FEFF 		bl	ConsoleIoSendString
+ 518              	.LVL61:
+  93:Core/Src/consoleCommands.c **** 		ConsoleIoSendString(STR_ENDLINE);
+ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s 			page 15
+
+
+ 519              		.loc 1 93 3 is_stmt 1 view .LVU110
+ 520 001e BDF80600 		ldrh	r0, [sp, #6]
+ 521 0022 FFF7FEFF 		bl	ConsoleSendParamHexUint16
+ 522              	.LVL62:
+  94:Core/Src/consoleCommands.c **** 	}
+ 523              		.loc 1 94 3 view .LVU111
+ 524 0026 0348     		ldr	r0, .L32+4
+ 525 0028 FFF7FEFF 		bl	ConsoleIoSendString
+ 526              	.LVL63:
+ 527 002c F1E7     		b	.L29
+ 528              	.L33:
+ 529 002e 00BF     		.align	2
+ 530              	.L32:
+ 531 0030 00000000 		.word	.LC10
+ 532 0034 18000000 		.word	.LC1
+ 533              		.cfi_endproc
+ 534              	.LFE133:
+ 536              		.section	.rodata.ConsoleCommandParamExampleInt16.str1.4,"aMS",%progbits,1
+ 537              		.align	2
+ 538              	.LC11:
+ 539 0000 50617261 		.ascii	"Parameter is \000"
+ 539      6D657465 
+ 539      72206973 
+ 539      2000
+ 540 000e 0000     		.align	2
+ 541              	.LC12:
+ 542 0010 20283078 		.ascii	" (0x\000"
+ 542      00
+ 543 0015 000000   		.align	2
+ 544              	.LC13:
+ 545 0018 2900     		.ascii	")\000"
+ 546              		.section	.text.ConsoleCommandParamExampleInt16,"ax",%progbits
+ 547              		.align	1
+ 548              		.syntax unified
+ 549              		.thumb
+ 550              		.thumb_func
+ 552              	ConsoleCommandParamExampleInt16:
+ 553              	.LVL64:
+ 554              	.LFB132:
+  70:Core/Src/consoleCommands.c **** 	int16_t parameterInt;
+ 555              		.loc 1 70 1 view -0
+ 556              		.cfi_startproc
+ 557              		@ args = 0, pretend = 0, frame = 8
+ 558              		@ frame_needed = 0, uses_anonymous_args = 0
+  70:Core/Src/consoleCommands.c **** 	int16_t parameterInt;
+ 559              		.loc 1 70 1 is_stmt 0 view .LVU113
+ 560 0000 10B5     		push	{r4, lr}
+ 561              		.cfi_def_cfa_offset 8
+ 562              		.cfi_offset 4, -8
+ 563              		.cfi_offset 14, -4
+ 564 0002 82B0     		sub	sp, sp, #8
+ 565              		.cfi_def_cfa_offset 16
+  71:Core/Src/consoleCommands.c **** 	eCommandResult_T result;
+ 566              		.loc 1 71 2 is_stmt 1 view .LVU114
+  72:Core/Src/consoleCommands.c **** 	result = ConsoleReceiveParamInt16(buffer, 1, &parameterInt);
+ 567              		.loc 1 72 2 view .LVU115
+  73:Core/Src/consoleCommands.c **** 	if ( COMMAND_SUCCESS == result )
+ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s 			page 16
+
+
+ 568              		.loc 1 73 2 view .LVU116
+  73:Core/Src/consoleCommands.c **** 	if ( COMMAND_SUCCESS == result )
+ 569              		.loc 1 73 11 is_stmt 0 view .LVU117
+ 570 0004 0DF10602 		add	r2, sp, #6
+ 571 0008 0121     		movs	r1, #1
+ 572 000a FFF7FEFF 		bl	ConsoleReceiveParamInt16
+ 573              	.LVL65:
+  74:Core/Src/consoleCommands.c **** 	{
+ 574              		.loc 1 74 2 is_stmt 1 view .LVU118
+  74:Core/Src/consoleCommands.c **** 	{
+ 575              		.loc 1 74 5 is_stmt 0 view .LVU119
+ 576 000e 0446     		mov	r4, r0
+ 577 0010 10B1     		cbz	r0, .L37
+ 578              	.LVL66:
+ 579              	.L35:
+  83:Core/Src/consoleCommands.c **** }
+ 580              		.loc 1 83 2 is_stmt 1 view .LVU120
+  84:Core/Src/consoleCommands.c **** static eCommandResult_T ConsoleCommandParamExampleHexUint16(const char buffer[])
+ 581              		.loc 1 84 1 is_stmt 0 view .LVU121
+ 582 0012 2046     		mov	r0, r4
+ 583 0014 02B0     		add	sp, sp, #8
+ 584              		.cfi_remember_state
+ 585              		.cfi_def_cfa_offset 8
+ 586              		@ sp needed
+ 587 0016 10BD     		pop	{r4, pc}
+ 588              	.LVL67:
+ 589              	.L37:
+ 590              		.cfi_restore_state
+  76:Core/Src/consoleCommands.c **** 		ConsoleSendParamInt16(parameterInt);
+ 591              		.loc 1 76 3 is_stmt 1 view .LVU122
+ 592 0018 0A48     		ldr	r0, .L38
+ 593              	.LVL68:
+  76:Core/Src/consoleCommands.c **** 		ConsoleSendParamInt16(parameterInt);
+ 594              		.loc 1 76 3 is_stmt 0 view .LVU123
+ 595 001a FFF7FEFF 		bl	ConsoleIoSendString
+ 596              	.LVL69:
+  77:Core/Src/consoleCommands.c **** 		ConsoleIoSendString(" (0x");
+ 597              		.loc 1 77 3 is_stmt 1 view .LVU124
+ 598 001e BDF90600 		ldrsh	r0, [sp, #6]
+ 599 0022 FFF7FEFF 		bl	ConsoleSendParamInt16
+ 600              	.LVL70:
+  78:Core/Src/consoleCommands.c **** 		ConsoleSendParamHexUint16((uint16_t)parameterInt);
+ 601              		.loc 1 78 3 view .LVU125
+ 602 0026 0848     		ldr	r0, .L38+4
+ 603 0028 FFF7FEFF 		bl	ConsoleIoSendString
+ 604              	.LVL71:
+  79:Core/Src/consoleCommands.c **** 		ConsoleIoSendString(")");
+ 605              		.loc 1 79 3 view .LVU126
+ 606 002c BDF80600 		ldrh	r0, [sp, #6]
+ 607 0030 FFF7FEFF 		bl	ConsoleSendParamHexUint16
+ 608              	.LVL72:
+  80:Core/Src/consoleCommands.c **** 		ConsoleIoSendString(STR_ENDLINE);
+ 609              		.loc 1 80 3 view .LVU127
+ 610 0034 0548     		ldr	r0, .L38+8
+ 611 0036 FFF7FEFF 		bl	ConsoleIoSendString
+ 612              	.LVL73:
+  81:Core/Src/consoleCommands.c **** 	}
+ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s 			page 17
+
+
+ 613              		.loc 1 81 3 view .LVU128
+ 614 003a 0548     		ldr	r0, .L38+12
+ 615 003c FFF7FEFF 		bl	ConsoleIoSendString
+ 616              	.LVL74:
+ 617 0040 E7E7     		b	.L35
+ 618              	.L39:
+ 619 0042 00BF     		.align	2
+ 620              	.L38:
+ 621 0044 00000000 		.word	.LC11
+ 622 0048 10000000 		.word	.LC12
+ 623 004c 18000000 		.word	.LC13
+ 624 0050 18000000 		.word	.LC1
+ 625              		.cfi_endproc
+ 626              	.LFE132:
+ 628              		.section	.text.ConsoleCommandsGetTable,"ax",%progbits
+ 629              		.align	1
+ 630              		.global	ConsoleCommandsGetTable
+ 631              		.syntax unified
+ 632              		.thumb
+ 633              		.thumb_func
+ 635              	ConsoleCommandsGetTable:
+ 636              	.LFB137:
+ 180:Core/Src/consoleCommands.c **** 
+ 181:Core/Src/consoleCommands.c **** const sConsoleCommandTable_T* ConsoleCommandsGetTable(void)
+ 182:Core/Src/consoleCommands.c **** {
+ 637              		.loc 1 182 1 view -0
+ 638              		.cfi_startproc
+ 639              		@ args = 0, pretend = 0, frame = 0
+ 640              		@ frame_needed = 0, uses_anonymous_args = 0
+ 641              		@ link register save eliminated.
+ 183:Core/Src/consoleCommands.c **** 	return (mConsoleCommandTable);
+ 642              		.loc 1 183 2 view .LVU130
+ 184:Core/Src/consoleCommands.c **** }
+ 643              		.loc 1 184 1 is_stmt 0 view .LVU131
+ 644 0000 0048     		ldr	r0, .L41
+ 645 0002 7047     		bx	lr
+ 646              	.L42:
+ 647              		.align	2
+ 648              	.L41:
+ 649 0004 00000000 		.word	.LANCHOR0
+ 650              		.cfi_endproc
+ 651              	.LFE137:
+ 653              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 654              		.align	2
+ 655              	.LC14:
+ 656 0000 3B00     		.ascii	";\000"
+ 657 0002 0000     		.align	2
+ 658              	.LC15:
+ 659 0004 68656C70 		.ascii	"help\000"
+ 659      00
+ 660 0009 000000   		.align	2
+ 661              	.LC16:
+ 662 000c 76657200 		.ascii	"ver\000"
+ 663              		.align	2
+ 664              	.LC17:
+ 665 0010 696E7400 		.ascii	"int\000"
+ 666              		.align	2
+ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s 			page 18
+
+
+ 667              	.LC18:
+ 668 0014 75313668 		.ascii	"u16h\000"
+ 668      00
+ 669 0019 000000   		.align	2
+ 670              	.LC19:
+ 671 001c 746F6767 		.ascii	"toggle\000"
+ 671      6C6500
+ 672 0023 00       		.align	2
+ 673              	.LC20:
+ 674 0024 6C656473 		.ascii	"leds\000"
+ 674      00
+ 675              		.section	.rodata.mConsoleCommandTable,"a"
+ 676              		.align	2
+ 677              		.set	.LANCHOR0,. + 0
+ 680              	mConsoleCommandTable:
+ 681 0000 00000000 		.word	.LC14
+ 682 0004 00000000 		.word	ConsoleCommandComment
+ 683 0008 436F6D6D 		.ascii	"Comment! You do need a space after the semicolon. \000"
+ 683      656E7421 
+ 683      20596F75 
+ 683      20646F20 
+ 683      6E656564 
+ 684 003b 00000000 		.space	13
+ 684      00000000 
+ 684      00000000 
+ 684      00
+ 685 0048 04000000 		.word	.LC15
+ 686 004c 00000000 		.word	ConsoleCommandHelp
+ 687 0050 4C697374 		.ascii	"Lists the commands available\000"
+ 687      73207468 
+ 687      6520636F 
+ 687      6D6D616E 
+ 687      64732061 
+ 688 006d 00000000 		.space	35
+ 688      00000000 
+ 688      00000000 
+ 688      00000000 
+ 688      00000000 
+ 689 0090 0C000000 		.word	.LC16
+ 690 0094 00000000 		.word	ConsoleCommandVer
+ 691 0098 47657420 		.ascii	"Get the version string\000"
+ 691      74686520 
+ 691      76657273 
+ 691      696F6E20 
+ 691      73747269 
+ 692 00af 00000000 		.space	41
+ 692      00000000 
+ 692      00000000 
+ 692      00000000 
+ 692      00000000 
+ 693 00d8 10000000 		.word	.LC17
+ 694 00dc 00000000 		.word	ConsoleCommandParamExampleInt16
+ 695 00e0 486F7720 		.ascii	"How to get a signed int16 from params list: int -32"
+ 695      746F2067 
+ 695      65742061 
+ 695      20736967 
+ 695      6E656420 
+ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s 			page 19
+
+
+ 696 0113 3100     		.ascii	"1\000"
+ 697 0115 00000000 		.space	11
+ 697      00000000 
+ 697      000000
+ 698 0120 14000000 		.word	.LC18
+ 699 0124 00000000 		.word	ConsoleCommandParamExampleHexUint16
+ 700 0128 486F7720 		.ascii	"How to get a hex u16 from the params list: u16h aB1"
+ 700      746F2067 
+ 700      65742061 
+ 700      20686578 
+ 700      20753136 
+ 701 015b 3200     		.ascii	"2\000"
+ 702 015d 00000000 		.space	11
+ 702      00000000 
+ 702      000000
+ 703 0168 1C000000 		.word	.LC19
+ 704 016c 00000000 		.word	ConsoleCommandLedToggle
+ 705 0170 546F6767 		.ascii	"Toggle onboard LEDs\000"
+ 705      6C65206F 
+ 705      6E626F61 
+ 705      7264204C 
+ 705      45447300 
+ 706 0184 00000000 		.space	44
+ 706      00000000 
+ 706      00000000 
+ 706      00000000 
+ 706      00000000 
+ 707 01b0 24000000 		.word	.LC20
+ 708 01b4 00000000 		.word	ConsoleCommandParamLedOnOff
+ 709 01b8 5475726E 		.ascii	"Turn the specified number of LEDs from the params 0"
+ 709      20746865 
+ 709      20737065 
+ 709      63696669 
+ 709      6564206E 
+ 710 01eb 20746F20 		.ascii	" to 4: leds 3"
+ 710      343A206C 
+ 710      65647320 
+ 710      33
+ 711 01f8 00000000 		.word	0
+ 712 01fc 00000000 		.word	0
+ 713 0200 00       		.ascii	"\000"
+ 714 0201 00000000 		.space	63
+ 714      00000000 
+ 714      00000000 
+ 714      00000000 
+ 714      00000000 
+ 715              		.text
+ 716              	.Letext0:
+ 717              		.file 2 "/Users/johannes/Library/Application Support/Code/User/globalStorage/bmd.stm32-for-vscode/
+ 718              		.file 3 "/Users/johannes/Library/Application Support/Code/User/globalStorage/bmd.stm32-for-vscode/
+ 719              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h"
+ 720              		.file 5 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
+ 721              		.file 6 "Core/Inc/console.h"
+ 722              		.file 7 "Core/Inc/consoleCommands.h"
+ 723              		.file 8 "Core/Inc/consoleIo.h"
+ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s 			page 20
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 consoleCommands.c
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s:20     .text.ConsoleCommandComment:0000000000000000 $t
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s:25     .text.ConsoleCommandComment:0000000000000000 ConsoleCommandComment
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s:47     .rodata.ConsoleCommandVer.str1.4:0000000000000000 $d
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s:54     .text.ConsoleCommandVer:0000000000000000 $t
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s:59     .text.ConsoleCommandVer:0000000000000000 ConsoleCommandVer
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s:93     .text.ConsoleCommandVer:0000000000000014 $d
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s:99     .rodata.ConsoleCommandHelp.str1.4:0000000000000000 $d
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s:103    .text.ConsoleCommandHelp:0000000000000000 $t
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s:108    .text.ConsoleCommandHelp:0000000000000000 ConsoleCommandHelp
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s:180    .text.ConsoleCommandHelp:0000000000000038 $d
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s:187    .rodata.ConsoleCommandParamLedOnOff.str1.4:0000000000000000 $d
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s:209    .text.ConsoleCommandParamLedOnOff:0000000000000000 $t
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s:214    .text.ConsoleCommandParamLedOnOff:0000000000000000 ConsoleCommandParamLedOnOff
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s:247    .text.ConsoleCommandParamLedOnOff:000000000000001e $d
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s:406    .text.ConsoleCommandParamLedOnOff:00000000000000f0 $d
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s:419    .text.ConsoleCommandLedToggle:0000000000000000 $t
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s:424    .text.ConsoleCommandLedToggle:0000000000000000 ConsoleCommandLedToggle
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s:459    .text.ConsoleCommandLedToggle:0000000000000018 $d
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s:465    .rodata.ConsoleCommandParamExampleHexUint16.str1.4:0000000000000000 $d
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s:469    .text.ConsoleCommandParamExampleHexUint16:0000000000000000 $t
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s:474    .text.ConsoleCommandParamExampleHexUint16:0000000000000000 ConsoleCommandParamExampleHexUint16
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s:531    .text.ConsoleCommandParamExampleHexUint16:0000000000000030 $d
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s:537    .rodata.ConsoleCommandParamExampleInt16.str1.4:0000000000000000 $d
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s:547    .text.ConsoleCommandParamExampleInt16:0000000000000000 $t
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s:552    .text.ConsoleCommandParamExampleInt16:0000000000000000 ConsoleCommandParamExampleInt16
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s:621    .text.ConsoleCommandParamExampleInt16:0000000000000044 $d
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s:629    .text.ConsoleCommandsGetTable:0000000000000000 $t
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s:635    .text.ConsoleCommandsGetTable:0000000000000000 ConsoleCommandsGetTable
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s:649    .text.ConsoleCommandsGetTable:0000000000000004 $d
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s:654    .rodata.str1.4:0000000000000000 $d
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s:676    .rodata.mConsoleCommandTable:0000000000000000 $d
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s:680    .rodata.mConsoleCommandTable:0000000000000000 mConsoleCommandTable
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s:252    .text.ConsoleCommandParamLedOnOff:0000000000000023 $d
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s:252    .text.ConsoleCommandParamLedOnOff:0000000000000024 $t
+
+UNDEFINED SYMBOLS
+ConsoleIoSendString
+ConsoleReceiveParamInt16
+HAL_GPIO_WritePin
+ConsoleSendParamInt16
+HAL_GPIO_TogglePin
+ConsoleReceiveParamHexUint16
+ConsoleSendParamHexUint16
