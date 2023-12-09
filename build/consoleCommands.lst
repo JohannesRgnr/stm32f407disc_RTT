@@ -1,4 +1,4 @@
-ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s 			page 1
+ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccCsEnGU.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s 			page 1
   28:Core/Src/consoleCommands.c **** static const sConsoleCommandTable_T mConsoleCommandTable[] =
   29:Core/Src/consoleCommands.c **** {
   30:Core/Src/consoleCommands.c ****     {";", ConsoleCommandComment, HELP("Comment! You do need a space after the semicolon. ")},
-ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s 			page 2
+ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccCsEnGU.s 			page 2
 
 
   31:Core/Src/consoleCommands.c ****     {"help", ConsoleCommandHelp, HELP("Lists the commands available")},
@@ -118,7 +118,7 @@ ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s 			page 1
   50:Core/Src/consoleCommands.c **** 	uint32_t i;
   51:Core/Src/consoleCommands.c **** 	uint32_t tableLength;
   52:Core/Src/consoleCommands.c **** 	eCommandResult_T result = COMMAND_SUCCESS;
-ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s 			page 3
+ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccCsEnGU.s 			page 3
 
 
   53:Core/Src/consoleCommands.c **** 
@@ -178,7 +178,7 @@ ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s 			page 1
   68              		.cfi_def_cfa_offset 8
   69              		.cfi_offset 3, -8
   70              		.cfi_offset 14, -4
-ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s 			page 4
+ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccCsEnGU.s 			page 4
 
 
  101:Core/Src/consoleCommands.c **** 	eCommandResult_T result = COMMAND_SUCCESS;
@@ -238,7 +238,7 @@ ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s 			page 1
  117              		.cfi_def_cfa_offset 16
  118              		.cfi_offset 4, -16
  119              		.cfi_offset 5, -12
-ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s 			page 5
+ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccCsEnGU.s 			page 5
 
 
  120              		.cfi_offset 6, -8
@@ -298,7 +298,7 @@ ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s 			page 1
  157 0022 3044     		add	r0, r0, r6
  158 0024 FFF7FEFF 		bl	ConsoleIoSendString
  159              	.LVL12:
-ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s 			page 6
+ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccCsEnGU.s 			page 6
 
 
   64:Core/Src/consoleCommands.c **** 	}
@@ -358,7 +358,7 @@ ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s 			page 1
  197              	.LC6:
  198 0040 5475726E 		.ascii	"Turning 3 LEDs on\000"
  198      696E6720 
-ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s 			page 7
+ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccCsEnGU.s 			page 7
 
 
  198      33204C45 
@@ -418,7 +418,7 @@ ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s 			page 1
  225              		.cfi_offset 5, -8
  226              		.cfi_offset 14, -4
  227 0002 83B0     		sub	sp, sp, #12
-ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s 			page 8
+ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccCsEnGU.s 			page 8
 
 
  228              		.cfi_def_cfa_offset 24
@@ -478,7 +478,7 @@ ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s 			page 1
  270              		.loc 1 134 5 view .LVU56
  271              	.L13:
  135:Core/Src/consoleCommands.c **** 
-ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s 			page 9
+ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccCsEnGU.s 			page 9
 
 
  136:Core/Src/consoleCommands.c **** 			case 1:
@@ -538,7 +538,7 @@ ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s 			page 1
  282              		.cfi_restore_state
  137:Core/Src/consoleCommands.c **** 				HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12, GPIO_PIN_SET);
  283              		.loc 1 137 5 is_stmt 1 view .LVU59
-ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s 			page 10
+ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccCsEnGU.s 			page 10
 
 
  284 0042 2B4D     		ldr	r5, .L22
@@ -598,7 +598,7 @@ ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s 			page 1
  147:Core/Src/consoleCommands.c **** 				break;
  329              		.loc 1 147 5 view .LVU69
  330 008a 1B48     		ldr	r0, .L22+8
-ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s 			page 11
+ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccCsEnGU.s 			page 11
 
 
  331 008c FFF7FEFF 		bl	ConsoleIoSendString
@@ -658,7 +658,7 @@ ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s 			page 1
  375              	.LVL43:
  160:Core/Src/consoleCommands.c **** 				break;
  376              		.loc 1 160 5 view .LVU80
-ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s 			page 12
+ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccCsEnGU.s 			page 12
 
 
  377 00cc 0A48     		ldr	r0, .L22+8
@@ -718,7 +718,7 @@ ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s 			page 1
  111:Core/Src/consoleCommands.c **** 	eCommandResult_T result = COMMAND_SUCCESS;
  427              		.loc 1 111 1 view -0
  428              		.cfi_startproc
-ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s 			page 13
+ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccCsEnGU.s 			page 13
 
 
  429              		@ args = 0, pretend = 0, frame = 0
@@ -778,7 +778,7 @@ ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s 			page 1
  471              		.thumb
  472              		.thumb_func
  474              	ConsoleCommandParamExampleHexUint16:
-ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s 			page 14
+ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccCsEnGU.s 			page 14
 
 
  475              	.LVL56:
@@ -838,7 +838,7 @@ ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s 			page 1
  517 001a FFF7FEFF 		bl	ConsoleIoSendString
  518              	.LVL61:
   93:Core/Src/consoleCommands.c **** 		ConsoleIoSendString(STR_ENDLINE);
-ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s 			page 15
+ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccCsEnGU.s 			page 15
 
 
  519              		.loc 1 93 3 is_stmt 1 view .LVU110
@@ -898,7 +898,7 @@ ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s 			page 1
   72:Core/Src/consoleCommands.c **** 	result = ConsoleReceiveParamInt16(buffer, 1, &parameterInt);
  567              		.loc 1 72 2 view .LVU115
   73:Core/Src/consoleCommands.c **** 	if ( COMMAND_SUCCESS == result )
-ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s 			page 16
+ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccCsEnGU.s 			page 16
 
 
  568              		.loc 1 73 2 view .LVU116
@@ -958,7 +958,7 @@ ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s 			page 1
  611 0036 FFF7FEFF 		bl	ConsoleIoSendString
  612              	.LVL73:
   81:Core/Src/consoleCommands.c **** 	}
-ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s 			page 17
+ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccCsEnGU.s 			page 17
 
 
  613              		.loc 1 81 3 view .LVU128
@@ -1018,7 +1018,7 @@ ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s 			page 1
  664              	.LC17:
  665 0010 696E7400 		.ascii	"int\000"
  666              		.align	2
-ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s 			page 18
+ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccCsEnGU.s 			page 18
 
 
  667              	.LC18:
@@ -1078,7 +1078,7 @@ ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s 			page 1
  695      65742061 
  695      20736967 
  695      6E656420 
-ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s 			page 19
+ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccCsEnGU.s 			page 19
 
 
  696 0113 3100     		.ascii	"1\000"
@@ -1136,45 +1136,45 @@ ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s 			page 1
  721              		.file 6 "Core/Inc/console.h"
  722              		.file 7 "Core/Inc/consoleCommands.h"
  723              		.file 8 "Core/Inc/consoleIo.h"
-ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s 			page 20
+ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccCsEnGU.s 			page 20
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 consoleCommands.c
-/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s:20     .text.ConsoleCommandComment:0000000000000000 $t
-/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s:25     .text.ConsoleCommandComment:0000000000000000 ConsoleCommandComment
-/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s:47     .rodata.ConsoleCommandVer.str1.4:0000000000000000 $d
-/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s:54     .text.ConsoleCommandVer:0000000000000000 $t
-/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s:59     .text.ConsoleCommandVer:0000000000000000 ConsoleCommandVer
-/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s:93     .text.ConsoleCommandVer:0000000000000014 $d
-/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s:99     .rodata.ConsoleCommandHelp.str1.4:0000000000000000 $d
-/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s:103    .text.ConsoleCommandHelp:0000000000000000 $t
-/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s:108    .text.ConsoleCommandHelp:0000000000000000 ConsoleCommandHelp
-/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s:180    .text.ConsoleCommandHelp:0000000000000038 $d
-/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s:187    .rodata.ConsoleCommandParamLedOnOff.str1.4:0000000000000000 $d
-/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s:209    .text.ConsoleCommandParamLedOnOff:0000000000000000 $t
-/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s:214    .text.ConsoleCommandParamLedOnOff:0000000000000000 ConsoleCommandParamLedOnOff
-/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s:247    .text.ConsoleCommandParamLedOnOff:000000000000001e $d
-/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s:406    .text.ConsoleCommandParamLedOnOff:00000000000000f0 $d
-/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s:419    .text.ConsoleCommandLedToggle:0000000000000000 $t
-/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s:424    .text.ConsoleCommandLedToggle:0000000000000000 ConsoleCommandLedToggle
-/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s:459    .text.ConsoleCommandLedToggle:0000000000000018 $d
-/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s:465    .rodata.ConsoleCommandParamExampleHexUint16.str1.4:0000000000000000 $d
-/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s:469    .text.ConsoleCommandParamExampleHexUint16:0000000000000000 $t
-/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s:474    .text.ConsoleCommandParamExampleHexUint16:0000000000000000 ConsoleCommandParamExampleHexUint16
-/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s:531    .text.ConsoleCommandParamExampleHexUint16:0000000000000030 $d
-/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s:537    .rodata.ConsoleCommandParamExampleInt16.str1.4:0000000000000000 $d
-/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s:547    .text.ConsoleCommandParamExampleInt16:0000000000000000 $t
-/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s:552    .text.ConsoleCommandParamExampleInt16:0000000000000000 ConsoleCommandParamExampleInt16
-/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s:621    .text.ConsoleCommandParamExampleInt16:0000000000000044 $d
-/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s:629    .text.ConsoleCommandsGetTable:0000000000000000 $t
-/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s:635    .text.ConsoleCommandsGetTable:0000000000000000 ConsoleCommandsGetTable
-/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s:649    .text.ConsoleCommandsGetTable:0000000000000004 $d
-/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s:654    .rodata.str1.4:0000000000000000 $d
-/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s:676    .rodata.mConsoleCommandTable:0000000000000000 $d
-/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s:680    .rodata.mConsoleCommandTable:0000000000000000 mConsoleCommandTable
-/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s:252    .text.ConsoleCommandParamLedOnOff:0000000000000023 $d
-/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSh2v8E.s:252    .text.ConsoleCommandParamLedOnOff:0000000000000024 $t
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccCsEnGU.s:20     .text.ConsoleCommandComment:0000000000000000 $t
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccCsEnGU.s:25     .text.ConsoleCommandComment:0000000000000000 ConsoleCommandComment
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccCsEnGU.s:47     .rodata.ConsoleCommandVer.str1.4:0000000000000000 $d
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccCsEnGU.s:54     .text.ConsoleCommandVer:0000000000000000 $t
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccCsEnGU.s:59     .text.ConsoleCommandVer:0000000000000000 ConsoleCommandVer
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccCsEnGU.s:93     .text.ConsoleCommandVer:0000000000000014 $d
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccCsEnGU.s:99     .rodata.ConsoleCommandHelp.str1.4:0000000000000000 $d
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccCsEnGU.s:103    .text.ConsoleCommandHelp:0000000000000000 $t
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccCsEnGU.s:108    .text.ConsoleCommandHelp:0000000000000000 ConsoleCommandHelp
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccCsEnGU.s:180    .text.ConsoleCommandHelp:0000000000000038 $d
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccCsEnGU.s:187    .rodata.ConsoleCommandParamLedOnOff.str1.4:0000000000000000 $d
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccCsEnGU.s:209    .text.ConsoleCommandParamLedOnOff:0000000000000000 $t
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccCsEnGU.s:214    .text.ConsoleCommandParamLedOnOff:0000000000000000 ConsoleCommandParamLedOnOff
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccCsEnGU.s:247    .text.ConsoleCommandParamLedOnOff:000000000000001e $d
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccCsEnGU.s:406    .text.ConsoleCommandParamLedOnOff:00000000000000f0 $d
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccCsEnGU.s:419    .text.ConsoleCommandLedToggle:0000000000000000 $t
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccCsEnGU.s:424    .text.ConsoleCommandLedToggle:0000000000000000 ConsoleCommandLedToggle
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccCsEnGU.s:459    .text.ConsoleCommandLedToggle:0000000000000018 $d
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccCsEnGU.s:465    .rodata.ConsoleCommandParamExampleHexUint16.str1.4:0000000000000000 $d
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccCsEnGU.s:469    .text.ConsoleCommandParamExampleHexUint16:0000000000000000 $t
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccCsEnGU.s:474    .text.ConsoleCommandParamExampleHexUint16:0000000000000000 ConsoleCommandParamExampleHexUint16
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccCsEnGU.s:531    .text.ConsoleCommandParamExampleHexUint16:0000000000000030 $d
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccCsEnGU.s:537    .rodata.ConsoleCommandParamExampleInt16.str1.4:0000000000000000 $d
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccCsEnGU.s:547    .text.ConsoleCommandParamExampleInt16:0000000000000000 $t
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccCsEnGU.s:552    .text.ConsoleCommandParamExampleInt16:0000000000000000 ConsoleCommandParamExampleInt16
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccCsEnGU.s:621    .text.ConsoleCommandParamExampleInt16:0000000000000044 $d
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccCsEnGU.s:629    .text.ConsoleCommandsGetTable:0000000000000000 $t
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccCsEnGU.s:635    .text.ConsoleCommandsGetTable:0000000000000000 ConsoleCommandsGetTable
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccCsEnGU.s:649    .text.ConsoleCommandsGetTable:0000000000000004 $d
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccCsEnGU.s:654    .rodata.str1.4:0000000000000000 $d
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccCsEnGU.s:676    .rodata.mConsoleCommandTable:0000000000000000 $d
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccCsEnGU.s:680    .rodata.mConsoleCommandTable:0000000000000000 mConsoleCommandTable
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccCsEnGU.s:252    .text.ConsoleCommandParamLedOnOff:0000000000000023 $d
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccCsEnGU.s:252    .text.ConsoleCommandParamLedOnOff:0000000000000024 $t
 
 UNDEFINED SYMBOLS
 ConsoleIoSendString

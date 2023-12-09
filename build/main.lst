@@ -1,4 +1,4 @@
-ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//cc7W2uL1.s 			page 1
+ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSCIvDA.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//cc7W2uL1.s 			page 1
   29:Core/Src/main.c ****  */
   30:Core/Src/main.c **** int main(void)
   31:Core/Src/main.c **** {
-ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//cc7W2uL1.s 			page 2
+ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSCIvDA.s 			page 2
 
 
   32:Core/Src/main.c ****     /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
@@ -118,7 +118,7 @@ ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//cc7W2uL1.s 			page 1
   86:Core/Src/main.c ****     RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_SYSCLK | RCC_CLOCKTYPE_PCLK1 |
   87:Core/Src/main.c ****     RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
   88:Core/Src/main.c ****     RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
-ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//cc7W2uL1.s 			page 3
+ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSCIvDA.s 			page 3
 
 
   89:Core/Src/main.c ****     RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;
@@ -178,7 +178,7 @@ ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//cc7W2uL1.s 			page 1
   58              		.loc 1 112 5 view .LVU7
   59 0024 0199     		ldr	r1, [sp, #4]
   60              	.LBE4:
-ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//cc7W2uL1.s 			page 4
+ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSCIvDA.s 			page 4
 
 
   61              		.loc 1 112 5 view .LVU8
@@ -238,7 +238,7 @@ ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//cc7W2uL1.s 			page 1
  111              	.LBB8:
  112              		.loc 1 116 5 view .LVU28
  113 0062 0592     		str	r2, [sp, #20]
-ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//cc7W2uL1.s 			page 5
+ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSCIvDA.s 			page 5
 
 
  114              		.loc 1 116 5 view .LVU29
@@ -298,7 +298,7 @@ ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//cc7W2uL1.s 			page 1
  157              		.loc 1 127 1 is_stmt 0 view .LVU46
  158 009c 0DB0     		add	sp, sp, #52
  159              		.cfi_def_cfa_offset 4
-ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//cc7W2uL1.s 			page 6
+ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSCIvDA.s 			page 6
 
 
  160              		@ sp needed
@@ -358,7 +358,7 @@ ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//cc7W2uL1.s 			page 1
   16:Drivers/CMSIS/Include/cmsis_gcc.h ****  * www.apache.org/licenses/LICENSE-2.0
   17:Drivers/CMSIS/Include/cmsis_gcc.h ****  *
   18:Drivers/CMSIS/Include/cmsis_gcc.h ****  * Unless required by applicable law or agreed to in writing, software
-ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//cc7W2uL1.s 			page 7
+ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSCIvDA.s 			page 7
 
 
   19:Drivers/CMSIS/Include/cmsis_gcc.h ****  * distributed under the License is distributed on an AS IS BASIS, WITHOUT
@@ -418,7 +418,7 @@ ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//cc7W2uL1.s 			page 1
   73:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic ignored "-Wattributes"
   74:Drivers/CMSIS/Include/cmsis_gcc.h ****   struct __attribute__((packed)) T_UINT32 { uint32_t v; };
   75:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic pop
-ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//cc7W2uL1.s 			page 8
+ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSCIvDA.s 			page 8
 
 
   76:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __UNALIGNED_UINT32(x)                  (((struct T_UINT32 *)(x))->v)
@@ -478,7 +478,7 @@ ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//cc7W2uL1.s 			page 1
  130:Drivers/CMSIS/Include/cmsis_gcc.h **** {
  131:Drivers/CMSIS/Include/cmsis_gcc.h ****   __ASM volatile ("cpsie i" : : : "memory");
  132:Drivers/CMSIS/Include/cmsis_gcc.h **** }
-ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//cc7W2uL1.s 			page 9
+ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSCIvDA.s 			page 9
 
 
  133:Drivers/CMSIS/Include/cmsis_gcc.h **** 
@@ -538,7 +538,7 @@ ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//cc7W2uL1.s 			page 1
  228 0004 3022     		movs	r2, #48
  229 0006 0021     		movs	r1, #0
  230 0008 08A8     		add	r0, sp, #32
-ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//cc7W2uL1.s 			page 10
+ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSCIvDA.s 			page 10
 
 
  231 000a FFF7FEFF 		bl	memset
@@ -598,7 +598,7 @@ ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//cc7W2uL1.s 			page 1
  272 0044 029B     		ldr	r3, [sp, #8]
  273              	.LBE13:
   66:Core/Src/main.c **** 
-ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//cc7W2uL1.s 			page 11
+ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSCIvDA.s 			page 11
 
 
  274              		.loc 1 66 5 view .LVU70
@@ -658,7 +658,7 @@ ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//cc7W2uL1.s 			page 1
  310              	.LVL2:
   79:Core/Src/main.c ****     {
  311              		.loc 1 79 8 view .LVU89
-ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//cc7W2uL1.s 			page 12
+ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSCIvDA.s 			page 12
 
 
  312 0070 98B9     		cbnz	r0, .L11
@@ -718,7 +718,7 @@ ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//cc7W2uL1.s 			page 1
  351              	.LVL4:
  352              	.L12:
   94:Core/Src/main.c ****     }
-ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//cc7W2uL1.s 			page 13
+ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSCIvDA.s 			page 13
 
 
  353              		.loc 1 94 9 view .LVU105
@@ -778,7 +778,7 @@ ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//cc7W2uL1.s 			page 1
  400              	.LVL9:
   42:Core/Src/main.c ****     
  401              		.loc 1 42 5 view .LVU111
-ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//cc7W2uL1.s 			page 14
+ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSCIvDA.s 			page 14
 
 
  402 0018 0020     		movs	r0, #0
@@ -821,23 +821,23 @@ ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//cc7W2uL1.s 			page 1
  436              		.file 11 "Core/Inc/SEGGER_RTT.h"
  437              		.file 12 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
  438              		.file 13 "<built-in>"
-ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//cc7W2uL1.s 			page 15
+ARM GAS  /var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSCIvDA.s 			page 15
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 main.c
-/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//cc7W2uL1.s:20     .text.MX_GPIO_Init:0000000000000000 $t
-/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//cc7W2uL1.s:25     .text.MX_GPIO_Init:0000000000000000 MX_GPIO_Init
-/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//cc7W2uL1.s:165    .text.MX_GPIO_Init:00000000000000a4 $d
-/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//cc7W2uL1.s:171    .text.Error_Handler:0000000000000000 $t
-/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//cc7W2uL1.s:177    .text.Error_Handler:0000000000000000 Error_Handler
-/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//cc7W2uL1.s:209    .text.SystemClock_Config:0000000000000000 $t
-/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//cc7W2uL1.s:215    .text.SystemClock_Config:0000000000000000 SystemClock_Config
-/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//cc7W2uL1.s:359    .text.SystemClock_Config:00000000000000a4 $d
-/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//cc7W2uL1.s:365    .rodata.main.str1.4:0000000000000000 $d
-/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//cc7W2uL1.s:369    .text.main:0000000000000000 $t
-/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//cc7W2uL1.s:375    .text.main:0000000000000000 main
-/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//cc7W2uL1.s:422    .text.main:0000000000000030 $d
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSCIvDA.s:20     .text.MX_GPIO_Init:0000000000000000 $t
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSCIvDA.s:25     .text.MX_GPIO_Init:0000000000000000 MX_GPIO_Init
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSCIvDA.s:165    .text.MX_GPIO_Init:00000000000000a4 $d
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSCIvDA.s:171    .text.Error_Handler:0000000000000000 $t
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSCIvDA.s:177    .text.Error_Handler:0000000000000000 Error_Handler
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSCIvDA.s:209    .text.SystemClock_Config:0000000000000000 $t
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSCIvDA.s:215    .text.SystemClock_Config:0000000000000000 SystemClock_Config
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSCIvDA.s:359    .text.SystemClock_Config:00000000000000a4 $d
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSCIvDA.s:365    .rodata.main.str1.4:0000000000000000 $d
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSCIvDA.s:369    .text.main:0000000000000000 $t
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSCIvDA.s:375    .text.main:0000000000000000 main
+/var/folders/0z/tsy30v1j4xl4_7kw94k978ww0000gn/T//ccSCIvDA.s:422    .text.main:0000000000000030 $d
 
 UNDEFINED SYMBOLS
 HAL_GPIO_Init
